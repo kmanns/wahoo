@@ -277,3 +277,25 @@ kbd,
 samp {
   font-family: var(--type-fixed-font-family);
 }
+
+/* ============================================================
+   Columns block  fix image border radius for image-on-right layout
+   The base CSS only rounds the left side of .columns-img-col img.
+   When the image column is on the right (last child at desktop), 
+   round the right side instead.
+   ============================================================ */
+
+/* Override the default left-only radius for ALL column images */
+.columns > div > .columns-img-col img {
+  border-radius: 20px 0 0 20px;
+}
+
+/* When image col is the last child (right side), round right corners instead */
+@media (min-width: 900px) {
+  .columns > div > .columns-img-col:last-child img {
+    border-radius: 0 20px 20px 0;
+  }
+
+  /* Also handle when image col is first child (left side)  keep left rounding */
+  .columns > div > .columns-img-col:first-child img {
+    border-radius: 20px 0 0 
