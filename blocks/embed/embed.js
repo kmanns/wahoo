@@ -118,14 +118,16 @@ export default function decorate(block) {
     });
     block.append(wrapper);
   } else {
-    // Use rootMargin to ensure zero-height elements (empty block after textContent clear)
-    // still trigger the observer before they're scrolled into view.
+    // After clearing textContent, the block has zero height and IntersectionObserver
+    // will never fire on a zero-height element. Observe the closest ancestor with
+    // meaningful dimensions (the section wrapper), falling back to the block itself.
+    const observeTarget = block.closest('.section') || block.parentElement || block;
     const observer = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) {
         observer.disconnect();
         loadEmbed(block, link);
       }
     }, { rootMargin: '200px 0px' });
-    observer.observe(block);
+    observer.observe(observeTarget);
   }
 }
