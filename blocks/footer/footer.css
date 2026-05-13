@@ -1,95 +1,210 @@
+/* =============================================================================
+   Wahoo Footer - Dark redesign matching wahoofitness.com
+   ============================================================================= */
+
 footer {
-    background-color: var(--color-brand-1000);
-    color: var(--background-color);
-    font: var(--type-body-2-default-font);
-    letter-spacing: var(--type-body-2-default-letter-spacing);
+  background-color: #000;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* Main footer wrapper */
+footer .footer {
+  background-color: #000;
 }
 
 footer .footer > div {
-    margin: auto;
-    max-width: 1200px;
-    padding: 40px 24px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row-reverse;
-
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 64px 32px 40px;
+  display: block;
 }
 
-footer .footer div.storeview-switcher-button button.storeview-switcher-button {
-    color: var(--background-color);
+/* ── Columns block override inside footer ── */
+
+/* Hide the columns block background/border-radius set by global columns.css */
+footer .footer .columns-wrapper {
+  background: transparent;
+  padding: 0;
+  margin: 0;
 }
 
-footer .footer p {
-    margin: 0;
-    color: var(--background-color);
+footer .footer .columns {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
 }
 
+/* The row inside .columns */
+footer .footer .columns > div {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 24px;
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  margin: 0 0 40px;
+  align-items: start;
+  flex-direction: unset;
+}
+
+/* Each column cell */
+footer .footer .columns > div > div {
+  order: unset;
+  flex: unset;
+}
+
+/* ── Column headings (rendered as <p><strong>) ── */
+footer .footer .columns p strong,
+footer .footer .columns > div > div > p:first-child strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.35px;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+/* Paragraph wrappers for headings */
+footer .footer .columns > div > div > p:first-child {
+  margin: 0 0 4px;
+}
+
+/* ── Navigation lists ── */
+footer .footer .columns ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer .footer .columns ul li {
+  margin-bottom: 8px;
+}
+
+/* ── Links ── */
+footer .footer .columns a,
+footer .footer .columns a:visited {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 1.5;
+  transition: color 0.2s ease;
+}
+
+footer .footer .columns a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ── Copyright paragraph ── */
+footer .footer p,
+footer .footer .columns p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  font-size: 12px;
+}
+
+/* Copyright line (last paragraph in connect column) */
+footer .footer .columns > div > div:last-child > p:last-child {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+
+/* ── Images (logo, etc.) ── */
 footer .footer img {
-    width: 99px;
-    height: auto;
+  width: 99px;
+  height: auto;
+  filter: brightness(0) invert(1); /* Make logo white on dark bg */
 }
 
-
-footer .footer a,
-footer .footer a:hover {
-    color: var(--background-color);
+/* ── Store-view switcher button ── */
+footer .footer div.storeview-switcher-button button.storeview-switcher-button {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .storeview-switcher-button {
-    background: transparent;
-    padding-left: 0;
+  background: transparent;
+  padding-left: 0;
 }
 
 .storeview-modal-storeview-title {
-    margin-bottom: var(--spacing-xxbig);
-    padding-inline-start: var(--spacing-xbig);
+  margin-bottom: var(--spacing-xxbig);
+  padding-inline-start: var(--spacing-xbig);
 }
 
 .modal .close-button {
-    top: 40px !important;
-    right: 40px !important;
+  top: 40px !important;
+  right: 40px !important;
 }
 
 .storeview-single-store {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .storeview-selection .storeview-multiple-stores {
-    list-style-image: url("../../icons/chevron-right.svg");
-    list-style-position: inside;
+  list-style-image: url("../../icons/chevron-right.svg");
+  list-style-position: inside;
 }
 
 .storeview-selection > li {
-    margin-bottom: var(--spacing-small);
+  margin-bottom: var(--spacing-small);
 }
 
 .storeview-multiple-stores > ul {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .storeview-multiple-stores > ul > li {
-    list-style: none;
-    display: none;
+  list-style: none;
+  display: none;
 }
 
 .storeview-multiple-stores[aria-expanded="true"] {
-    list-style-image: url("../../icons/chevron-down.svg");
+  list-style-image: url("../../icons/chevron-down.svg");
 }
 
 .storeview-multiple-stores[aria-expanded="true"] > ul {
-    padding-left: 0;
+  padding-left: 0;
 }
 
 .storeview-multiple-stores[aria-expanded="true"] > ul > li {
-    display: block;
-    list-style-type: none;
-    margin-bottom: var(--spacing-small);
+  display: block;
+  list-style-type: none;
+  margin-bottom: var(--spacing-small);
 }
 
+/* ── Responsive: tablet (2 cols) ── */
+@media (min-width: 600px) {
+  footer .footer .columns > div {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 32px;
+  }
+}
+
+/* ── Responsive: desktop (5 cols) ── */
 @media (min-width: 900px) {
-    footer .footer > div {
-        padding: 40px 32px 24px;
-    }
+  footer .footer > div {
+    padding: 64px 32px 40px;
+  }
+
+  footer .footer .columns > div {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px 24px;
+    margin-bottom: 48px;
+  }
+}
+
+@media (min-width: 1200px) {
+  footer .footer > div {
+    padding: 64px 32px 40px;
+  }
 }
