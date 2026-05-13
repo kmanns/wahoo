@@ -1,5 +1,14 @@
 /* Width behavior is controlled by herocta-width metadata */
 
+/*
+ * Break the hero-cta out of the global 1200px wrapper so it can
+ * be configured as full-width via the herocta-width metadata field.
+ */
+.hero-cta-container .hero-cta-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
 .hero-cta {
   --hero-cta-content-max-width: 420px;
   --hero-cta-overlay-tint: rgb(0 0 0 / 55%);
