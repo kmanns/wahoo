@@ -18,10 +18,7 @@
    ============================================================ */
 :root,
 .dropin-design {
-  /* Wahoo Blue replaces CitiSignal purple as primary accent */
   --main-color-accent:   #00a5df;
-
-  /* Remap brand color scale to Wahoo palette */
   --color-brand-300:     #9ca3af;
   --color-brand-500:     #00a5df;
   --color-brand-600:     #0090c4;
@@ -29,8 +26,6 @@
   --color-brand-800:     #191c1e;
   --color-brand-900:     #111418;
   --color-brand-1000:    #000;
-
-  /* Wahoo semantic brand tokens */
   --color-brand-primary:    #00a5df;
   --color-brand-secondary:  #191c1e;
   --color-brand-accent:     #00a5df;
@@ -39,13 +34,9 @@
   --color-text-light:       #6b7280;
   --color-surface-card:     #f3f4f6;
   --color-bar-bg:           #000;
-
-  /* Typography: Inter replaces Adobe Clean + Roboto */
   --type-base-font-family:    inter, arial, helvetica, sans-serif;
   --type-display-font-family: inter, arial, helvetica, sans-serif;
   --type-fixed-font-family:   "Roboto Mono", menlo, consolas, "Liberation Mono", monospace, system-ui, sans-serif;
-
-  /* Nav tokens */
   --nav-font-family:    inter, arial, helvetica, sans-serif;
   --nav-font-weight:    700;
   --nav-letter-spacing: 0.05em;
@@ -79,7 +70,7 @@ h6 {
 }
 
 /* ============================================================
-   5. Links
+   5. Links — least specific first, then increasingly specific
    ============================================================ */
 a:not(.dropin-design a) {
   color: var(--color-brand-primary);
@@ -87,6 +78,27 @@ a:not(.dropin-design a) {
 
 a:not(.dropin-design a):hover {
   color: var(--color-brand-secondary);
+  text-decoration: underline;
+}
+
+/* Nav links — more specific, after general link rules */
+.nav-sections a,
+.nav-tools a {
+  font-family: var(--nav-font-family);
+  font-weight: var(--nav-font-weight);
+  letter-spacing: var(--nav-letter-spacing);
+}
+
+/* Footer links — more specific, after general link rules */
+footer a,
+main .section.footer-section a {
+  color: var(--color-brand-primary);
+  text-decoration: none;
+}
+
+footer a:hover,
+main .section.footer-section a:hover {
+  color: #fff;
   text-decoration: underline;
 }
 
@@ -178,34 +190,8 @@ button.button.btn-ghost:hover {
 }
 
 /* ============================================================
-   8. Section background variants
+   8. Section background variants — ordered least to most specific
    ============================================================ */
-main .section.announcement-bar,
-main .section.announcement {
-  background-color: var(--color-bar-bg);
-  color: #fff;
-  margin: 0;
-  padding: var(--spacing-xsmall) 0;
-}
-
-main .section.announcement-bar a,
-main .section.announcement a {
-  color: var(--color-brand-primary);
-  text-decoration: none;
-}
-
-main .section.announcement-bar a:hover,
-main .section.announcement a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-footer,
-main .section.footer-section {
-  background-color: var(--color-bar-bg);
-  color: #fff;
-}
-
 main .section.light,
 main .section.highlight {
   background-color: var(--color-surface-card);
@@ -233,11 +219,35 @@ main .section.inverted a {
   color: var(--color-brand-primary);
 }
 
+footer,
+main .section.footer-section {
+  background-color: var(--color-bar-bg);
+  color: #fff;
+}
+
+main .section.announcement-bar,
+main .section.announcement {
+  background-color: var(--color-bar-bg);
+  color: #fff;
+  margin: 0;
+  padding: var(--spacing-xsmall) 0;
+}
+
+main .section.announcement-bar a,
+main .section.announcement a {
+  color: var(--color-brand-primary);
+  text-decoration: none;
+}
+
+main .section.announcement-bar a:hover,
+main .section.announcement a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
 /* ============================================================
    9. Navigation
    ============================================================ */
-.nav-sections a,
-.nav-tools a,
 header nav,
 header .nav {
   font-family: var(--nav-font-family);
@@ -246,22 +256,7 @@ header .nav {
 }
 
 /* ============================================================
-   10. Footer links — must come after general link rules
-   ============================================================ */
-footer a,
-main .section.footer-section a {
-  color: var(--color-brand-primary);
-  text-decoration: none;
-}
-
-footer a:hover,
-main .section.footer-section a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-/* ============================================================
-   11. Muted text
+   10. Muted text
    ============================================================ */
 .text-muted,
 .eyebrow,
@@ -272,7 +267,7 @@ caption {
 }
 
 /* ============================================================
-   12. Code blocks
+   11. Code blocks
    ============================================================ */
 code,
 pre,
@@ -282,11 +277,8 @@ samp {
 }
 
 /* ============================================================
-   13. Homepage section centering
+   12. Homepage section centering
    ============================================================ */
-
-/* Center the "What are you shopping for today?" and
-   "Why Shop with Wahoo" section headings + subtext */
 main .section > .default-content-wrapper > h2,
 main .section > .default-content-wrapper > p {
   text-align: center;
