@@ -1,101 +1,101 @@
 /* ============================================================
-   Wahoo "Why Shop with Wahoo" cards block
-   Matches wahoofitness.com perk-strip layout:
-   4 columns, icon top, centered text, light background
-   ============================================================ */
+Wahoo "Why Shop with Wahoo" cards block
+Matches wahoofitness.com perk-strip layout:
+4 columns, icon top, centered text, light background
+============================================================ */
 
 .section:has(.cards) {
-  background-color: #ffffff;
-  padding: var(--spacing-xxbig) 0;
+background-color: #fff;
+padding: var(--spacing-xxbig) 0;
 }
 
 /* Center heading above the cards */
 .section:has(.cards) > div > h2,
 .section:has(.cards) > div > p {
-  text-align: center;
+text-align: center;
 }
 
 .cards > ul {
-  list-style: none;
-  margin: 0 auto;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacing-medium);
+list-style: none;
+margin: 0 auto;
+padding: 0;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: var(--spacing-medium);
 }
 
 @media (max-width: 900px) {
-  .cards > ul {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.cards > ul {
+grid-template-columns: repeat(2, 1fr);
+}
 }
 
 @media (max-width: 480px) {
-  .cards > ul {
-    grid-template-columns: 1fr;
-  }
+.cards > ul {
+grid-template-columns: 1fr;
+}
 }
 
 .cards > ul > li {
-  border: none;
-  background-color: transparent;
-  border-radius: 0;
-  padding: var(--spacing-medium) var(--spacing-small);
-  color: #000000;
-  font-size: 1.4rem;
-  font-weight: normal;
-  line-height: 1.5;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+border: none;
+background-color: transparent;
+border-radius: 0;
+padding: var(--spacing-medium) var(--spacing-small);
+color: #000;
+font-size: 1.4rem;
+font-weight: normal;
+line-height: 1.5;
+text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 
 /* Icon wrapper */
 .cards .cards-card-icon {
-  width: 64px;
-  height: 64px;
-  margin-bottom: var(--spacing-small);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+width: 64px;
+height: 64px;
+margin-bottom: var(--spacing-small);
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 .cards .cards-card-icon svg {
-  width: 64px;
-  height: 64px;
-  stroke: #000000;
+width: 64px;
+height: 64px;
+stroke: #000;
 }
 
 /* Body text */
 .cards .cards-card-body {
-  margin: 0;
-  text-align: center;
+margin: 0;
+text-align: center;
 }
 
 .cards .cards-card-body p {
-  margin: 0 0 4px;
+margin: 0 0 4px;
 }
 
 .cards .cards-card-body p strong {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #000000;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.cards .cards-card-body p:not(:has(strong)):not(:has(a)) {
-  color: #6B7280;
-  font-size: 1.4rem;
+font-size: 1.6rem;
+font-weight: 600;
+color: #000;
+display: block;
+margin-bottom: 4px;
 }
 
 /* Hide the "Learn more" links to match reference (icon + title + subtext only) */
 .cards .cards-card-body p:has(a) {
-  display: none;
+display: none;
+}
+
+.cards .cards-card-body p:not(:is(:has(strong), :has(a))) {
+color: #6b7280;
+font-size: 1.4rem;
 }
 
 /* Remove image area (no images in these cards) */
 .cards .cards-card-image {
-  display: none;
+display: none;
 }
