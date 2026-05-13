@@ -1,5 +1,25 @@
+/* ============================================================
+   Wahoo "Why Shop with Wahoo" cards block
+   Matches wahoofitness.com perk-strip layout:
+   4 columns, icon top, centered text, light background
+   ============================================================ */
+
+.cards-container {
+  background-color: #ffffff;
+  padding: var(--spacing-xxbig) 0;
+}
+
 .cards-container .cards-wrapper {
   margin-top: 0;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--spacing-medium);
+}
+
+/* Section heading + subtext centering */
+.cards-container .cards-wrapper > *:not(.cards) {
+  text-align: center;
 }
 
 .cards > ul {
@@ -7,38 +27,82 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--spacing-medium);
+}
+
+@media (max-width: 900px) {
+  .cards > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .cards > ul {
+    grid-template-columns: 1fr;
+  }
 }
 
 .cards > ul > li {
   border: none;
-  background-color: var(--color-brand-1000);
-  border-radius: 20px;
-  padding: 20px;
-  color: var(--background-color);
-  font-size: 16px;
+  background-color: transparent;
+  border-radius: 0;
+  padding: var(--spacing-medium) var(--spacing-small);
+  color: #000000;
+  font-size: 1.4rem;
   font-weight: normal;
-  line-height: 24px;
+  line-height: 1.5;
   text-align: center;
-}
-
-.cards .cards-card-body {
-  margin: var(--spacing-small);
-}
-
-.cards .cards-card-image {
-  line-height: 0;
-  height: auto;
-  min-height: 150px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
-.cards > ul > li img {
-  width: auto;
-  height: 100px;
-  aspect-ratio: initial;
-  object-fit: cover;
+/* Icon wrapper */
+.cards .cards-card-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: var(--spacing-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards .cards-card-icon svg {
+  width: 64px;
+  height: 64px;
+  stroke: #000000;
+}
+
+/* Body text */
+.cards .cards-card-body {
+  margin: 0;
+  text-align: center;
+}
+
+.cards .cards-card-body p {
+  margin: 0 0 4px;
+}
+
+.cards .cards-card-body p strong {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #000000;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.cards .cards-card-body p:not(:has(strong)):not(:has(a)) {
+  color: #6B7280;
+  font-size: 1.4rem;
+}
+
+/* Hide the "Learn more" links to match reference (icon + title + subtext only) */
+.cards .cards-card-body p:has(a) {
+  display: none;
+}
+
+/* Remove image area (no images in these cards) */
+.cards .cards-card-image {
+  display: none;
 }
