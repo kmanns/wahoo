@@ -2,10 +2,6 @@
  * Wahoo Fitness — Brand CSS Patch
  * ================================
  * Apply on top of the existing citisignal-eds-boilerplate styles.css.
- * Add as a <link> AFTER styles/styles.css in head.html.
- *
- * Usage (in head.html, after existing styles):
- *   <link rel="stylesheet" href="/styles/wahoo-patch.css">
  */
 
 /* ============================================================
@@ -14,32 +10,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 /* ============================================================
-   2. Root token overrides — Brand colors + Typography
+   2. Root token overrides
    ============================================================ */
 :root,
 .dropin-design {
-  --main-color-accent:   #00a5df;
-  --color-brand-300:     #9ca3af;
-  --color-brand-500:     #00a5df;
-  --color-brand-600:     #0090c4;
-  --color-brand-700:     #007ba8;
-  --color-brand-800:     #191c1e;
-  --color-brand-900:     #111418;
-  --color-brand-1000:    #000;
-  --color-brand-primary:    #00a5df;
-  --color-brand-secondary:  #191c1e;
-  --color-brand-accent:     #00a5df;
-  --color-background:       #fff;
-  --color-text:             #191c1e;
-  --color-text-light:       #6b7280;
-  --color-surface-card:     #f3f4f6;
-  --color-bar-bg:           #000;
+  --main-color-accent:        #00a5df;
+  --color-brand-300:          #9ca3af;
+  --color-brand-500:          #00a5df;
+  --color-brand-600:          #0090c4;
+  --color-brand-700:          #007ba8;
+  --color-brand-800:          #191c1e;
+  --color-brand-900:          #111418;
+  --color-brand-1000:         #000;
+  --color-brand-primary:      #00a5df;
+  --color-brand-secondary:    #191c1e;
+  --color-brand-accent:       #00a5df;
+  --color-background:         #fff;
+  --color-text:               #191c1e;
+  --color-text-light:         #6b7280;
+  --color-surface-card:       #f3f4f6;
+  --color-bar-bg:             #000;
   --type-base-font-family:    inter, arial, helvetica, sans-serif;
   --type-display-font-family: inter, arial, helvetica, sans-serif;
   --type-fixed-font-family:   "Roboto Mono", menlo, consolas, "Liberation Mono", monospace, system-ui, sans-serif;
-  --nav-font-family:    inter, arial, helvetica, sans-serif;
-  --nav-font-weight:    700;
-  --nav-letter-spacing: 0.05em;
+  --nav-font-family:          inter, arial, helvetica, sans-serif;
+  --nav-font-weight:          700;
+  --nav-letter-spacing:       0.05em;
 }
 
 /* ============================================================
@@ -70,18 +66,10 @@ h6 {
 }
 
 /* ============================================================
-   5. Links — least specific first, then increasingly specific
+   5. Links — more-specific selectors first, general rules last
    ============================================================ */
-a:not(.dropin-design a) {
-  color: var(--color-brand-primary);
-}
 
-a:not(.dropin-design a):hover {
-  color: var(--color-brand-secondary);
-  text-decoration: underline;
-}
-
-/* Nav links — more specific, after general link rules */
+/* nav links — more specific than general a */
 .nav-sections a,
 .nav-tools a {
   font-family: var(--nav-font-family);
@@ -89,7 +77,26 @@ a:not(.dropin-design a):hover {
   letter-spacing: var(--nav-letter-spacing);
 }
 
-/* Footer links — more specific, after general link rules */
+/* dark/inverted section links — before footer a:hover */
+main .section.dark a,
+main .section.inverted a {
+  color: var(--color-brand-primary);
+}
+
+/* announcement-bar links — before footer a:hover */
+main .section.announcement-bar a,
+main .section.announcement a {
+  color: var(--color-brand-primary);
+  text-decoration: none;
+}
+
+main .section.announcement-bar a:hover,
+main .section.announcement a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* footer links — before general a:not() */
 footer a,
 main .section.footer-section a {
   color: var(--color-brand-primary);
@@ -102,8 +109,18 @@ main .section.footer-section a:hover {
   text-decoration: underline;
 }
 
+/* general link rules last */
+a:not(.dropin-design a) {
+  color: var(--color-brand-primary);
+}
+
+a:not(.dropin-design a):hover {
+  color: var(--color-brand-secondary);
+  text-decoration: underline;
+}
+
 /* ============================================================
-   6. Default button — Wahoo Blue, sharp corners
+   6. Default button
    ============================================================ */
 main a.button:any-link,
 button.button {
@@ -190,7 +207,7 @@ button.button.btn-ghost:hover {
 }
 
 /* ============================================================
-   8. Section background variants — ordered least to most specific
+   8. Section background variants
    ============================================================ */
 main .section.light,
 main .section.highlight {
@@ -214,11 +231,6 @@ main .section.inverted h3 {
   color: #fff;
 }
 
-main .section.dark a,
-main .section.inverted a {
-  color: var(--color-brand-primary);
-}
-
 footer,
 main .section.footer-section {
   background-color: var(--color-bar-bg);
@@ -231,18 +243,6 @@ main .section.announcement {
   color: #fff;
   margin: 0;
   padding: var(--spacing-xsmall) 0;
-}
-
-main .section.announcement-bar a,
-main .section.announcement a {
-  color: var(--color-brand-primary);
-  text-decoration: none;
-}
-
-main .section.announcement-bar a:hover,
-main .section.announcement a:hover {
-  color: #fff;
-  text-decoration: underline;
 }
 
 /* ============================================================
