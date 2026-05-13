@@ -9,12 +9,6 @@ background-color: #fff;
 padding: var(--spacing-xxbig) 0;
 }
 
-/* Center heading above the cards */
-.section:has(.cards) > div > h2,
-.section:has(.cards) > div > p {
-text-align: center;
-}
-
 .cards > ul {
 list-style: none;
 margin: 0 auto;
@@ -70,6 +64,12 @@ stroke: #000;
 /* Body text */
 .cards .cards-card-body {
 margin: 0;
+text-align: center;
+}
+
+/* Section heading centering — placed after .cards-card-body to satisfy no-descending-specificity */
+.section:has(.cards) > div > h2,
+.section:has(.cards) > div > p {
 text-align: center;
 }
 
