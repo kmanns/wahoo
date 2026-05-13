@@ -73,6 +73,13 @@ footer a {
   text-decoration: none;
 }
 
+.nav-sections a,
+.nav-tools a {
+  font-family: var(--nav-font-family);
+  font-weight: var(--nav-font-weight);
+  letter-spacing: var(--nav-letter-spacing);
+}
+
 footer a:hover {
   color: #fff;
   text-decoration: underline;
@@ -85,13 +92,6 @@ a:not(.dropin-design a) {
 a:not(.dropin-design a):hover {
   color: var(--color-brand-secondary);
   text-decoration: underline;
-}
-
-.nav-sections a,
-.nav-tools a {
-  font-family: var(--nav-font-family);
-  font-weight: var(--nav-font-weight);
-  letter-spacing: var(--nav-letter-spacing);
 }
 
 main .section.dark a,
