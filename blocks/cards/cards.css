@@ -4,27 +4,20 @@
    4 columns, icon top, centered text, light background
    ============================================================ */
 
-.cards-container {
+.section:has(.cards) {
   background-color: #ffffff;
   padding: var(--spacing-xxbig) 0;
 }
 
-.cards-container .cards-wrapper {
-  margin-top: 0;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 var(--spacing-medium);
-}
-
-/* Section heading + subtext centering */
-.cards-container .cards-wrapper > *:not(.cards) {
+/* Center heading above the cards */
+.section:has(.cards) > div > h2,
+.section:has(.cards) > div > p {
   text-align: center;
 }
 
 .cards > ul {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
