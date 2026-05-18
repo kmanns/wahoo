@@ -22,16 +22,7 @@
       "product-teaser",
       "quote",
       "tabs",
-      "video",
-      "blog-post",
-      "blog-tiles",
-      "circle-carousel",
-      "hero-cta",
-      "newsletter",
-      "promotional-hero",
-      "search-bar",
-      "store-locator",
-      "top-banner"
+      "video"
     ]
   },
   {
@@ -73,22 +64,6 @@
     "id": "tabs",
     "components": [
       "tabs-item"
-    ]
-  },
-  {
-    "id": "circle-carousel",
-    "components": [
-      "circle-carousel-item"
-    ]
-  },
-  {
-    "id": "search-bar",
-    "components": []
-  },
-  {
-    "id": "store-locator",
-    "components": [
-      "store-locator-item"
     ]
   }
 ]

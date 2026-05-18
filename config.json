@@ -4,6 +4,7 @@
       "commerce-core-endpoint": "https://na1-sandbox.api.commerce.adobe.com/NGqWb1jCB8UhohMLshMAHd/graphql",
       "commerce-endpoint": "https://na1-sandbox.api.commerce.adobe.com/NGqWb1jCB8UhohMLshMAHd/graphql",
       "commerce-assets-enabled": true,
+      "commerce-b2b-enabled": true,
       "headers": {
         "all": {
           "Store": "wahooeng"

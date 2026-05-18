@@ -49,6 +49,7 @@
     "@dropins/storefront-auth": "~3.0.0",
     "@dropins/storefront-cart": "~3.0.0",
     "@dropins/storefront-checkout": "~3.0.1",
+    "@dropins/storefront-company-management": "~1.2.0",
     "@dropins/storefront-order": "~3.0.0",
     "@dropins/storefront-payment-services": "~3.0.0",
     "@dropins/storefront-pdp": "~3.0.0",
