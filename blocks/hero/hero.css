@@ -1,57 +1,207 @@
+/* ===== Hero block â full-width image with text overlay ===== */
+
+/*
+ * Break out of the global 1200px wrapper constraint so the hero
+ * can span the full viewport width.
+ */
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
 }
 
+/* ââ Block shell ââââââââââââââââââââââââââââââââââââââââââââ */
 .hero {
   position: relative;
-  padding: 40px 24px 10px;
-  min-height: 300px;
-  max-width: 1200px;
-  margin: auto;
+  width: 100%;
+  min-height: 560px;
+  overflow: hidden;
+  color: #fff;
+
+  /* Ensure the block itself is full-width */
+  margin-inline: calc(50% - 50vw);
+  max-width: 100vw;
 }
 
-.hero h1 {
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+/* ââ Background image âââââââââââââââââââââââââââââââââââââââ */
+.hero-media {
   position: absolute;
-  top: initial;
-  bottom: 10px;
-  right: 32px;
-  background: rgb(0 0 0 / 50%);
-  max-width: 40%;
-  padding: 20px 30px;
-  border-radius: 20px 0;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  line-height: 30px;
-}
-
-.hero p {
-  max-width: 1200px;
-  margin: 0 auto;
-  color: var(--background-color);
-  position: relative;
-}
-
-.hero picture {
-  z-index: -1;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-media picture,
+.hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: center top;
+}
+
+/* ââ Overlay container ââââââââââââââââââââââââââââââââââââââ */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 48px 5%;
   box-sizing: border-box;
 }
 
-.hero img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
+/* ââ Dark gradient tint for readability âââââââââââââââââââââ */
+.hero-tint {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to top,
+    rgb(0 0 0 / 70%) 0%,
+    rgb(0 0 0 / 40%) 40%,
+    rgb(0 0 0 / 0%) 80%
+  );
+  pointer-events: none;
 }
 
-@media (min-width: 900px) {
+/* ââ Text content âââââââââââââââââââââââââââââââââââââââââââ */
+.hero-content {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+}
+
+.hero-content h1,
+.hero-content h2,
+.hero-content h3 {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 8px rgb(0 0 0 / 40%);
+}
+
+.hero-content p {
+  margin: 0 0 20px;
+  color: rgb(255 255 255 / 90%);
+  font-size: clamp(0.95rem, 1.5vw, 1.125rem);
+  line-height: 1.6;
+  text-shadow: 0 1px 4px rgb(0 0 0 / 30%);
+}
+
+.hero-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ââ CTA buttons ââââââââââââââââââââââââââââââââââââââââââââ */
+.hero-content .button,
+.hero-content p .button {
+  display: inline-block;
+  padding: 12px 28px;
+  min-width: 140px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+  margin: 0 8px 8px 0;
+}
+
+.hero-content .button:hover,
+.hero-content p .button:hover {
+  background-color: #fff;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* ââ Size variants ââââââââââââââââââââââââââââââââââââââââââ */
+.hero[data-size='short'] {
+  min-height: 360px;
+}
+
+.hero[data-size='medium'] {
+  min-height: 480px;
+}
+
+.hero[data-size='tall'] {
+  min-height: 640px;
+}
+
+.hero[data-size='fullscreen'] {
+  min-height: 100vh;
+}
+
+/* ââ Position variants ââââââââââââââââââââââââââââââââââââââ */
+.hero[data-position$='-center'] .hero-overlay {
+  align-items: center;
+}
+
+.hero[data-position$='-center'] .hero-content {
+  text-align: center;
+}
+
+.hero[data-position$='-right'] .hero-overlay {
+  align-items: flex-end;
+}
+
+.hero[data-position$='-right'] .hero-content {
+  text-align: right;
+}
+
+.hero[data-position^='top-'] .hero-overlay {
+  justify-content: flex-start;
+}
+
+.hero[data-position^='middle-'] .hero-overlay {
+  justify-content: center;
+}
+
+/* ââ Responsive âââââââââââââââââââââââââââââââââââââââââââââ */
+@media (max-width: 900px) {
   .hero {
-    padding: 40px 32px 10px;
+    min-height: 480px;
+  }
+
+  .hero-overlay {
+    padding: 36px 6%;
+  }
+
+  .hero-content {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 400px;
+  }
+
+  .hero-overlay {
+    padding: 28px 5%;
+    justify-content: flex-end;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-content .button {
+    width: 100%;
+    max-width: 260px;
+    margin-right: 0;
   }
 }

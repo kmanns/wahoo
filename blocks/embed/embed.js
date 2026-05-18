@@ -55,6 +55,16 @@ const embedTwitter = (url) => {
   return embedHTML;
 };
 
+const embedInstagram = (url) => {
+  const embedHTML = `<blockquote class="instagram-media" data-instgrm-permalink="${url.href}" data-instgrm-version="14"
+    style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
+    margin: 1px; max-width:540px; min-width:326px; padding:0; width:calc(100% - 2px);">
+    <a href="${url.href}">View on Instagram</a>
+  </blockquote>`;
+  loadScript('https://www.instagram.com/embed.js');
+  return embedHTML;
+};
+
 const loadEmbed = (block, link, autoplay) => {
   if (block.classList.contains('embed-is-loaded')) {
     return;
@@ -73,6 +83,10 @@ const loadEmbed = (block, link, autoplay) => {
       match: ['twitter'],
       embed: embedTwitter,
     },
+    {
+      match: ['instagram'],
+      embed: embedInstagram,
+    },
   ];
 
   const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => link.includes(match)));
@@ -89,7 +103,9 @@ const loadEmbed = (block, link, autoplay) => {
 
 export default function decorate(block) {
   const placeholder = block.querySelector('picture');
-  const link = block.querySelector('a').href;
+  const linkEl = block.querySelector('a');
+  if (!linkEl) return;
+  const link = linkEl.href;
   block.textContent = '';
 
   if (placeholder) {
@@ -102,12 +118,16 @@ export default function decorate(block) {
     });
     block.append(wrapper);
   } else {
+    // After clearing textContent, the block has zero height and IntersectionObserver
+    // will never fire on a zero-height element. Observe the closest ancestor with
+    // meaningful dimensions (the section wrapper), falling back to the block itself.
+    const observeTarget = block.closest('.section') || block.parentElement || block;
     const observer = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) {
         observer.disconnect();
         loadEmbed(block, link);
       }
-    });
-    observer.observe(block);
+    }, { rootMargin: '200px 0px' });
+    observer.observe(observeTarget);
   }
 }
