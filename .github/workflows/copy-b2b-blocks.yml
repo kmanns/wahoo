@@ -3,6 +3,9 @@ name: Copy B2B Blocks from Takara
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   copy-blocks:
     runs-on: ubuntu-latest
