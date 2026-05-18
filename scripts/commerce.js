@@ -356,6 +356,16 @@ export function rootLink(link) {
  */
 function buildTemplateColumns(doc) {
   const columns = doc.querySelectorAll('main > div.section[data-column-width]');
+  if (!columns.length) return;
+
+  // Apply flex layout so section-level column metadata can create a row layout
+  // even when the page is missing the explicit `template: columns` metadata.
+  const main = doc.querySelector('main');
+  if (main) {
+    main.style.setProperty('display', 'flex');
+    main.style.setProperty('flex-wrap', 'wrap');
+    main.style.setProperty('align-items', 'flex-start');
+  }
 
   columns.forEach((column) => {
     const columnWidth = column.getAttribute('data-column-width');
@@ -363,6 +373,7 @@ function buildTemplateColumns(doc) {
 
     if (columnWidth) {
       column.style.setProperty('--column-width', columnWidth);
+      column.style.setProperty('flex', '0 0 var(--column-width)');
       column.removeAttribute('data-column-width');
     }
 
@@ -380,6 +391,13 @@ function buildTemplateColumns(doc) {
 export function applyTemplates(doc) {
   if (doc.body.classList.contains('columns')) {
     buildTemplateColumns(doc);
+  } else {
+    // Some authored account pages use section-level column metadata without
+    // declaring `template: columns` in page metadata.
+    const hasColumnSections = doc.querySelector('main > div.section[data-column-width]');
+    if (hasColumnSections) {
+      buildTemplateColumns(doc);
+    }
   }
 }
 
