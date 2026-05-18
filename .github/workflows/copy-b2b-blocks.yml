@@ -1,0 +1,51 @@
+name: Copy B2B Blocks from Takara
+
+on:
+  workflow_dispatch:
+
+jobs:
+  copy-blocks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout wahoo
+        uses: actions/checkout@v4
+        with:
+          repository: kmanns/wahoo
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: wahoo
+
+      - name: Checkout takara
+        uses: actions/checkout@v4
+        with:
+          repository: kmanns/takara
+          path: takara
+
+      - name: Copy missing B2B blocks
+        run: |
+          BLOCKS="commerce-account-nav commerce-b2b-negotiable-quote commerce-b2b-negotiable-quote-template commerce-b2b-po-approval-flow commerce-b2b-po-approval-rule-details commerce-b2b-po-approval-rule-form commerce-b2b-po-approval-rules-list commerce-b2b-po-checkout-success commerce-b2b-po-comment-form commerce-b2b-po-comments-list commerce-b2b-po-company-purchase-orders commerce-b2b-po-customer-purchase-orders commerce-b2b-po-header commerce-b2b-po-history-log commerce-b2b-po-require-approval-purchase-orders commerce-b2b-po-status commerce-b2b-quick-order commerce-b2b-quote-checkout commerce-b2b-requisition-list commerce-b2b-requisition-list-view commerce-company-accept-invitation commerce-company-create commerce-company-credit commerce-company-profile commerce-company-roles-permissions commerce-company-structure commerce-company-users commerce-customer-company"
+          for block in $BLOCKS; do
+            cp -r takara/blocks/$block wahoo/blocks/
+          done
+
+      - name: Copy missing initializers
+        run: |
+          INITIALIZERS="company-switcher.js purchase-order.js quick-order.js quote-management.js requisition-list.js"
+          for init in $INITIALIZERS; do
+            cp takara/scripts/initializers/$init wahoo/scripts/initializers/
+          done
+
+      - name: Copy missing dropin packages
+        run: |
+          DROPINS="storefront-company-switcher storefront-purchase-order storefront-quick-order storefront-quote-management storefront-requisition-list"
+          for dropin in $DROPINS; do
+            cp -r takara/scripts/__dropins__/$dropin wahoo/scripts/__dropins__/
+          done
+
+      - name: Commit and push
+        run: |
+          cd wahoo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --cached --quiet || git commit -m "Add missing B2B blocks, initializers, and dropin packages"
+          git push
