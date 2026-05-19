@@ -37,8 +37,6 @@ function redirectIfUnauthenticated() {
     window.location.replace(`/customer/login?redirect=${encodeURIComponent(pathname)}`);
   }
 }
-
-
 /**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
