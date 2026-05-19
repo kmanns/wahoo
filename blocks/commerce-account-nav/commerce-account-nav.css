@@ -103,15 +103,6 @@
 }
 
 /* Hover: light blue tint on non-active items */
-.commerce-account-nav__item:hover:not(.commerce-account-nav__item--active) {
-    background-color: #f0f7ff;
-    color: #1C82E0;
-}
-
-.commerce-account-nav__item:hover:not(.commerce-account-nav__item--active) .commerce-account-nav__item__icon {
-    color: #1C82E0;
-}
-
 /* Active: Takara blue background, white text */
 .commerce-account-nav__item--active {
     background-color: #1C82E0;
@@ -133,6 +124,16 @@
 .commerce-account-nav__item--active .commerce-account-nav__item__chevron {
     opacity: 0.8;
     color: #fff;
+}
+
+/* Hover: light blue tint on non-active items */
+.commerce-account-nav__item:hover:not(.commerce-account-nav__item--active) {
+    background-color: #f0f7ff;
+    color: #1C82E0;
+}
+
+.commerce-account-nav__item:hover:not(.commerce-account-nav__item--active) .commerce-account-nav__item__icon {
+    color: #1C82E0;
 }
 
 /* Section headings inside account content blocks */
@@ -196,17 +197,21 @@ main > .section:not(:first-child) {
     box-shadow: none;
 }
 
+.order-customer-details-content .dropin-card__content {
+    padding: 18px 20px;
+}
+
+.account-orders-list-card .dropin-card__content {
+    padding: 18px 20px;
+    gap: 18px;
+}
+
 .account-customer-information-card .dropin-card__content,
 .account-change-password .dropin-card__content,
 .account-edit-customer-information .dropin-card__content,
 .account-orders-list-action--minifiedView .dropin-card__content,
-.account-address-card .dropin-card__content {
-    padding: 18px 20px;
-}
-
-.account-empty-list.account-empty-list--minified .dropin-card__content,
-.account-orders-list-card .dropin-card__content,
-.order-customer-details-content .dropin-card__content {
+.account-address-card .dropin-card__content,
+.account-empty-list.account-empty-list--minified .dropin-card__content {
     padding: 18px 20px;
 }
 
@@ -257,40 +262,13 @@ main > .section:not(:first-child) {
 }
 
 .account-customer-information-card__content p,
-.order-customer-details-content__container p {
-    color: var(--account-ui-text);
-}
-
-.account-orders-list-action__card-wrapper > p,
-.account-actions-address__title {
-    color: var(--account-ui-blue);
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.4;
-}
-
-.account-address-card .account-address-card__description p {
-    color: var(--account-ui-text);
-}
-
-.order-customer-details-content__container {
-    gap: 16px;
-}
-
-.order-customer-details-content__container > div {
-    padding: 16px;
-    border: 1px solid var(--account-ui-border-light);
-    border-radius: var(--account-ui-radius);
-    background: #fff;
-}
-
 .order-customer-details-content__container-description p {
     margin-right: 0;
 }
 
-.account-orders-list-card .account-orders-list-card__content p,
-.account-orders-list-card .account-orders-list-card__content div {
-    margin-bottom: 10px;
+.account-address-card .account-address-card__description p,
+.order-customer-details-content__container p {
+    color: var(--account-ui-text);
 }
 
 .account-customer-information-card__content p:nth-child(1),
@@ -314,8 +292,9 @@ main > .section:not(:first-child) {
     background: #fff;
 }
 
-.account-orders-list-card .dropin-card__content {
-    gap: 18px;
+.account-orders-list-card .account-orders-list-card__content p,
+.account-orders-list-card .account-orders-list-card__content div {
+    margin-bottom: 10px;
 }
 
 .account-orders-list-card__content--track_number,
@@ -354,6 +333,14 @@ main > .section:not(:first-child) {
 .account-actions-address {
     min-height: 0;
     height: auto;
+}
+
+.account-orders-list-action__card-wrapper > p,
+.account-actions-address__title {
+    color: var(--account-ui-blue);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
 }
 
 .account-orders-list-action__card-wrapper svg,
@@ -425,6 +412,17 @@ main > .section:not(:first-child) {
     color: var(--account-ui-blue-strong);
 }
 
+.order-customer-details-content__container {
+    gap: 16px;
+}
+
+.order-customer-details-content__container > div {
+    padding: 16px;
+    border: 1px solid var(--account-ui-border-light);
+    border-radius: var(--account-ui-radius);
+    background: #fff;
+}
+
 @media (max-width: 767px) {
     .account-customer-information-card .account-customer-information-card__actions,
     .account-change-password .account-change-password__actions,
@@ -434,9 +432,9 @@ main > .section:not(:first-child) {
         align-items: stretch;
     }
 
-    .account-address-form-wrapper__buttons button,
     .account-change-password .account-change-password__actions button,
-    .account-edit-customer-information .account-edit-customer-information__actions button {
+    .account-edit-customer-information .account-edit-customer-information__actions button,
+    .account-address-form-wrapper__buttons button {
         width: 100%;
         min-width: 0;
     }
