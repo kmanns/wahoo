@@ -30,6 +30,7 @@
     "default": {
       "commerce-core-endpoint": "{ENDPOINT}",
       "commerce-endpoint": "{CS_ENDPOINT}",
+      "product-page-path": "/products/default",
       "headers": {
         "all": {
           "Store": "default"
@@ -55,8 +56,8 @@
       },
       "plugins": {
         "picker": {
-           "rootCategory": "{YOUR_ROOT_CATEGORY_ID}"
-         }
+          "rootCategory": "{YOUR_ROOT_CATEGORY_ID}"
+        }
       }
     }
   },
@@ -67,7 +68,7 @@
     "admin": {
       "role": {
         "config_admin": [
-          "{ADMIN_USER_EMAIL}"
+          "kmanns@adobe.com"
         ]
       },
       "requireAuth": "auto"
