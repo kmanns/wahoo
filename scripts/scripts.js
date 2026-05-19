@@ -22,6 +22,22 @@ import {
   IS_UE,
   IS_DA,
 } from './commerce.js';
+/**
+ * Redirects unauthenticated users away from protected /customer/* pages.
+ * Uses a synchronous cookie check to fire before any dropin JS loads.
+ */
+function redirectIfUnauthenticated() {
+  const PROTECTED_PREFIX = '/customer/';
+  const UNPROTECTED_PATHS = ['/customer/login', '/customer/create-account', '/customer/forgotpassword', '/customer/confirm'];
+  const { pathname } = window.location;
+  if (!pathname.startsWith(PROTECTED_PREFIX)) return;
+  if (UNPROTECTED_PATHS.some((p) => pathname.startsWith(p))) return;
+  const hasAuthCookie = document.cookie.split(';').some((c) => c.trim().startsWith('auth_dropin_user_token='));
+  if (!hasAuthCookie) {
+    window.location.replace(`/customer/login?redirect=${encodeURIComponent(pathname)}`);
+  }
+}
+
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -102,6 +118,7 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
+  redirectIfUnauthenticated();
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
 

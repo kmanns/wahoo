@@ -8,7 +8,10 @@ move-to-http-header="true"
 {
 "prerender": [{
 "where": {
-"href_matches": "/*"
+"and": [
+{"href_matches": "/*"},
+{"not": {"href_matches": "/customer/*"}}
+]
 },
 "eagerness": "moderate"
 }]
@@ -26,6 +29,10 @@ move-to-http-header="true"
 "@dropins/storefront-payment-services/": "/scripts/__dropins__/storefront-payment-services/",
 "@dropins/storefront-pdp/": "/scripts/__dropins__/storefront-pdp/",
 "@dropins/storefront-purchase-order/": "/scripts/__dropins__/storefront-purchase-order/",
+"@dropins/storefront-quote-management/": "/scripts/__dropins__/storefront-quote-management/",
+"@dropins/storefront-company-switcher/": "/scripts/__dropins__/storefront-company-switcher/",
+"@dropins/storefront-requisition-list/": "/scripts/__dropins__/storefront-requisition-list/",
+"@dropins/storefront-quick-order/": "/scripts/__dropins__/storefront-quick-order/",
 "@dropins/storefront-recommendations/": "/scripts/__dropins__/storefront-recommendations/",
 "@dropins/storefront-wishlist/": "/scripts/__dropins__/storefront-wishlist/",
 "@dropins/storefront-personalization/": "/scripts/__dropins__/storefront-personalization/",
