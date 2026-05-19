@@ -40,7 +40,6 @@ const renderPurchaseOrderApprovalFlow = async (blockElement, permissions = {}) =
   )(blockElement);
 };
 
-
 /**
  * Returns a promise that resolves with the auth/permissions payload.
  * Uses the cached value immediately if available, otherwise waits for the event.
@@ -67,7 +66,7 @@ export default async function decorate(block) {
   }
 
   // Initial permissions check
-  // Wait for permissions — use cached value or block until the event fires
+  // Wait for permissions  use cached value or block until the event fires
   const initialPermissions = await waitForPermissions();
   await renderPurchaseOrderApprovalFlow(block, initialPermissions);
 
