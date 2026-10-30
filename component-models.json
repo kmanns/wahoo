@@ -677,5 +677,9 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "catalog-menu",
+    "fields": []
   }
 ]

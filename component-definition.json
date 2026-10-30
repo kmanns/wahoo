@@ -387,6 +387,18 @@
               "columns": 2
             }
           }
+        },
+        {
+          "title": "Catalog Menu",
+          "id": "catalog-menu",
+          "plugins": {
+            "da": {
+              "name": "catalog-menu",
+              "rows": 1,
+              "columns": 1,
+              "unsafeHTML": "<div class=\"catalog-menu\"><div><div></div></div></div>"
+            }
+          }
         }
       ]
     },
