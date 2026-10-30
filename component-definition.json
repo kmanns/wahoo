@@ -192,7 +192,8 @@
           "filter": "columns-cell",
           "plugins": {
             "da": {
-              "behaviour": "columns-cell"
+              "behaviour": "columns-cell",
+              "unsafeHTML": "<div></div>"
             }
           }
         },
@@ -373,6 +374,17 @@
                   "selector": "div:nth-child(1)>div:nth-child(1)>picture:nth-child(2)>img:nth-child(3)[src]"
                 }
               ]
+            }
+          }
+        },
+        {
+          "title": "Commerce Order Comments",
+          "id": "commerce-order-comments",
+          "model": "commerce-order-comments",
+          "plugins": {
+            "da": {
+              "rows": 1,
+              "columns": 2
             }
           }
         }
